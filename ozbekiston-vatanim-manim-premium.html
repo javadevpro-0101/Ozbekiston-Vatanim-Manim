@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="O‘zbekiston — Vatanim manim. O‘zbekiston hududlari, tarixi va go‘zalligiga interaktiv sayohat.">
+<title>O‘zbekiston — Vatanim manim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111f;--panel:rgba(13,27,45,.72);--ink:#f4f7fb;--muted:#a9b8ca;--blue:#63d5ff;--gold:#ffc66d;--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 75% 15%,rgba(25,108,163,.18),transparent 45%),radial-gradient(ellipse at 15% 65%,rgba(26,74,113,.18),transparent 48%),linear-gradient(180deg,#07111f,#081522 55%,#07111f)}
+#universe{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.9}
+a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 44px));margin:auto}.nav{height:82px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;padding:0 max(22px,calc((100vw - 1180px)/2));background:rgba(7,17,31,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}.brand{display:flex;gap:11px;align-items:center;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.04em}.brand-mark{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#77e0ff,#4287ff);color:#07111f;font-size:19px}.navlinks{display:flex;align-items:center;gap:28px;color:#b7c6d7;font-size:13px}.navlinks a:hover{color:white}.nav-cta{border:1px solid var(--line);padding:10px 15px;border-radius:99px;color:#fff}
+.hero{min-height:calc(100svh - 82px);display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:35px;padding-top:50px;padding-bottom:95px}.eyebrow{display:inline-flex;gap:9px;align-items:center;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}.eyebrow:before{content:"";width:23px;height:1px;background:currentColor}.hero h1{font-family:Manrope,sans-serif;font-size:clamp(48px,7vw,88px);line-height:.99;letter-spacing:-.075em;margin:24px 0}.hero h1 span{display:block;color:transparent;background:linear-gradient(100deg,#fff 10%,#9edfff 55%,#ffc66d 100%);background-clip:text;-webkit-background-clip:text}.hero p{font-size:16px;line-height:1.9;color:var(--muted);max-width:590px}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:31px}.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 19px;border-radius:99px;font-weight:700;font-size:13px;transition:transform .25s,background .25s}.btn:hover{transform:translateY(-3px)}.btn-primary{background:#f4f8fc;color:#081522}.btn-ghost{border:1px solid var(--line);color:#f4f8fc}.hero-art{min-height:450px;position:relative;display:grid;place-items:center}.orb{width:min(34vw,390px);aspect-ratio:1;border-radius:50%;position:relative;background:radial-gradient(circle at 32% 25%,rgba(113,218,255,.25),rgba(24,78,119,.12) 38%,rgba(7,17,31,.12) 68%);border:1px solid rgba(123,218,255,.25);box-shadow:inset 0 0 80px rgba(63,179,255,.09),0 0 100px rgba(34,143,215,.12);animation:float 7s ease-in-out infinite}.orb:before,.orb:after{content:"";position:absolute;inset:9%;border:1px solid rgba(127,216,255,.22);border-radius:50%;transform:rotateX(68deg) rotateZ(-20deg)}.orb:after{inset:-9%;transform:rotateX(68deg) rotateZ(45deg);border-color:rgba(255,198,109,.22)}.orb-core{position:absolute;inset:20%;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(122,220,255,.22),rgba(14,49,79,.04) 60%,transparent);border:1px solid rgba(255,255,255,.08)}.orb-label{position:absolute;left:2%;bottom:15%;padding:17px 19px;border:1px solid var(--line);border-radius:16px;background:rgba(8,22,37,.76);backdrop-filter:blur(12px)}.orb-label strong{display:block;font-family:Manrope;font-size:14px}.orb-label small{display:block;color:var(--muted);margin-top:5px}.float-chip{position:absolute;right:1%;top:15%;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:rgba(8,22,37,.75);color:#c9e9ff;font-size:11px;letter-spacing:.08em}.scroll-note{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;color:#71859a;font-size:10px;letter-spacing:.18em;text-transform:uppercase}.scroll-note span{width:1px;height:28px;background:linear-gradient(var(--blue),transparent)}
+.section{padding:95px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:36px}.section-kicker{color:var(--gold);font-size:11px;letter-spacing:.17em;font-weight:700;text-transform:uppercase}.section h2{font:800 clamp(32px,4.5vw,55px)/1.05 Manrope,sans-serif;letter-spacing:-.06em;margin:14px 0 0}.section-head p{max-width:390px;color:var(--muted);font-size:14px;line-height:1.8;margin:0}.filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:25px}.filter{cursor:pointer;color:#b7c6d7;background:rgba(255,255,255,.035);border:1px solid var(--line);padding:10px 15px;border-radius:99px;font:600 12px "DM Sans";transition:.2s}.filter.active,.filter:hover{background:#dff5ff;color:#081522;border-color:#dff5ff}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{--mx:50%;--my:50%;position:relative;min-height:390px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#102238;isolation:isolate;transform-style:preserve-3d;transition:border-color .35s,box-shadow .35s,transform .15s}.card[hidden]{display:none}.card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,13,23,.03) 0%,rgba(4,13,23,.24) 35%,rgba(4,13,23,.96) 100%);z-index:-1}.card:after{content:"";position:absolute;inset:0;opacity:0;z-index:2;pointer-events:none;background:radial-gradient(320px circle at var(--mx) var(--my),rgba(107,213,255,.22),transparent 48%);transition:opacity .25s}.card:hover{border-color:rgba(119,220,255,.65);box-shadow:0 22px 70px rgba(0,0,0,.25),0 0 30px rgba(62,183,255,.12)}.card:hover:after{opacity:1}.card-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.64;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .5s;filter:saturate(.82)}.card:hover .card-image{transform:scale(1.09);opacity:.78}.card-content{position:absolute;left:0;right:0;bottom:0;padding:25px;z-index:3;transform:translateZ(25px)}.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.card-num{font-size:10px;letter-spacing:.18em;color:#b4dff0}.card-tag{font-size:10px;border:1px solid rgba(255,255,255,.22);padding:6px 9px;border-radius:99px;background:rgba(7,17,31,.3);backdrop-filter:blur(8px)}.card h3{font:800 25px/1.15 Manrope,sans-serif;letter-spacing:-.04em;margin:0 0 7px}.slogan{color:var(--gold);font-size:12px;font-weight:700;margin:0 0 12px}.card p.desc{font-size:12px;line-height:1.75;color:#c4d1df;margin:0}.card-more{display:flex;align-items:center;justify-content:space-between;margin-top:19px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:10px;color:#d8e8f4;letter-spacing:.06em;text-transform:uppercase}.card-more span:last-child{font-size:18px;transition:transform .25s}.card:hover .card-more span:last-child{transform:translateX(5px)}
+.quote{margin:40px 0 0;border:1px solid var(--line);border-radius:22px;padding:34px;background:linear-gradient(120deg,rgba(39,101,140,.2),rgba(255,255,255,.025));display:flex;align-items:center;justify-content:space-between;gap:24px}.quote blockquote{font:600 clamp(19px,2.5vw,29px)/1.45 Manrope,sans-serif;letter-spacing:-.035em;margin:0;max-width:760px}.quote blockquote span{color:var(--blue)}.quote-mark{font:800 80px/1 Manrope;color:rgba(117,214,255,.45)}.closing{text-align:center;padding:100px 0 110px}.closing h2{font:800 clamp(36px,6vw,72px)/1.03 Manrope,sans-serif;letter-spacing:-.07em;max-width:800px;margin:18px auto}.closing p{color:var(--muted);line-height:1.8;max-width:560px;margin:0 auto}.closing .btn{margin-top:28px}footer{border-top:1px solid rgba(255,255,255,.08);padding:25px 0;color:#8194a8;font-size:11px}.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-13px) rotate(3deg)}}
+@media(max-width:850px){.navlinks{gap:15px}.hero{grid-template-columns:1fr;padding-top:75px}.hero-art{min-height:340px}.orb{width:min(65vw,330px)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{align-items:start;flex-direction:column}.section-head p{max-width:600px}}
+@media(max-width:560px){.wrap{width:calc(100% - 30px)}.nav{height:70px;padding:0 15px}.navlinks a:not(.nav-cta){display:none}.hero{min-height:auto;padding-top:68px;padding-bottom:70px}.hero h1{font-size:clamp(46px,13vw,68px)}.hero p{font-size:14px}.hero-art{min-height:300px}.orb{width:68vw}.float-chip{right:0;top:8%}.orb-label{left:0;bottom:9%}.section{padding:68px 0}.grid{grid-template-columns:1fr}.card{min-height:410px}.quote{padding:25px}.quote-mark{display:none}.closing{padding:70px 0}.section h2{font-size:39px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Added: regional map, details dialog, national ornament, cinematic transitions */
+body{transition:opacity .35s ease,filter .35s ease}
+body.page-leaving{opacity:0;filter:blur(7px)}
+.ornament{height:18px;width:100%;opacity:.5;background-image:linear-gradient(45deg,transparent 42%,rgba(99,213,255,.5) 43%,rgba(99,213,255,.5) 48%,transparent 49%),linear-gradient(-45deg,transparent 42%,rgba(255,198,109,.4) 43%,rgba(255,198,109,.4) 48%,transparent 49%);background-size:18px 18px;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.map-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
+.map-panel,.map-info{border:1px solid var(--line);border-radius:24px;background:rgba(10,25,42,.76);backdrop-filter:blur(14px);overflow:hidden}
+.map-panel{padding:18px;min-height:440px;position:relative}
+.map-panel-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:0 0 10px;color:#c5d7e8;font-size:12px}
+.map-panel-head span:last-child{color:var(--blue);font-size:10px;letter-spacing:.1em}
+.uz-map{width:100%;height:370px;display:block}
+.map-region{cursor:pointer;stroke:#b5e9ff;stroke-width:1.5;stroke-linejoin:round;fill:#173c58;transition:fill .2s,filter .2s,stroke-width .2s}
+.map-region:hover,.map-region:focus{fill:#2878a0;filter:drop-shadow(0 0 6px rgba(99,213,255,.55));stroke:#fff;stroke-width:2.6;outline:none}
+.map-region.selected{fill:#d6a957;stroke:#fff1ce;filter:drop-shadow(0 0 8px rgba(255,198,109,.45))}
+.map-label{fill:#e8f7ff;font:600 10px "DM Sans",sans-serif;pointer-events:none;text-anchor:middle}
+.map-info{padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:440px;background:radial-gradient(ellipse at 100% 0,rgba(68,159,204,.18),transparent 55%),rgba(10,25,42,.76)}
+.map-info .mini{color:var(--gold);font-size:10px;letter-spacing:.17em;text-transform:uppercase;font-weight:700}
+.map-info h3{font:800 clamp(27px,3vw,42px)/1.05 Manrope,sans-serif;letter-spacing:-.055em;margin:17px 0 10px}
+.map-info .map-slogan{color:var(--blue);font-weight:700;font-size:13px;margin-bottom:17px}
+.map-info p{font-size:13px;color:#b8c9da;line-height:1.9}
+.map-info .map-open{margin-top:16px;align-self:flex-start;border:1px solid var(--line);border-radius:99px;padding:12px 16px;background:rgba(255,255,255,.04);color:white;font-weight:700;cursor:pointer}
+.map-info .map-open:hover{background:#e9f8ff;color:#07111f}
+.modal-backdrop{position:fixed;inset:0;z-index:100;background:rgba(2,8,15,.78);backdrop-filter:blur(12px);display:none;place-items:center;padding:20px}
+.modal-backdrop.open{display:grid}
+.region-modal{width:min(620px,100%);max-height:min(85vh,780px);overflow:auto;position:relative;border:1px solid rgba(160,220,255,.25);border-radius:24px;background:#0b1b2c;box-shadow:0 30px 100px rgba(0,0,0,.55);padding:clamp(24px,5vw,42px)}
+.modal-close{position:absolute;right:18px;top:18px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:white;border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer}
+.region-modal .modal-kicker{color:var(--gold);font-size:10px;letter-spacing:.18em;font-weight:700;text-transform:uppercase}
+.region-modal h3{font:800 clamp(30px,6vw,48px)/1.05 Manrope,sans-serif;letter-spacing:-.06em;margin:16px 42px 8px 0}
+.region-modal .modal-slogan{color:var(--blue);font-weight:700;margin:0 0 20px}
+.region-modal p{color:#c2d0df;line-height:1.9;font-size:14px}
+.streetview-action{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;padding:14px 18px;border:1px solid rgba(99,213,255,.42);border-radius:14px;background:linear-gradient(135deg,rgba(35,112,163,.28),rgba(11,27,44,.9));color:#eaf7ff;text-decoration:none;font-weight:800;transition:transform .2s,border-color .2s}.streetview-action:hover{transform:translateY(-2px);border-color:#63d5ff}.streetview-frame{display:none;width:100%;height:min(52vh,430px);min-height:260px;margin-top:16px;border:1px solid rgba(99,213,255,.25);border-radius:16px;overflow:hidden;background:#07111f}.streetview-frame.open{display:block}.streetview-frame iframe{width:100%;height:100%;border:0}.streetview-note{font-size:11px!important;color:#8298ac!important;margin:10px 0 0!important;line-height:1.6!important}.region-modal .modal-foot{margin-top:25px;padding-top:18px;border-top:1px solid var(--line);color:#8298ac;font-size:11px}
+@media(max-width:850px){.map-layout{grid-template-columns:1fr}.map-panel{min-height:360px}.uz-map{height:300px}.map-info{min-height:unset}}
+@media(max-width:560px){.map-panel{padding:12px;min-height:300px}.uz-map{height:250px}.map-info{padding:23px}.map-label{font-size:8px}}
+
+
+/* National identity + interactive upgrade */
+:root{--gold:#e7bd66;--blue:#68c7e8;--silk:#e9dfc2}
+.brand-mark{background:linear-gradient(135deg,#e7bd66,#f7e9b7);color:#12263a}
+.map-panel{perspective:1000px}.uz-map{filter:drop-shadow(0 20px 18px rgba(0,0,0,.28));transform:rotateX(8deg) rotateY(-4deg);transform-origin:center;transition:transform .45s,filter .45s}.map-panel:hover .uz-map{transform:rotateX(0) rotateY(0) translateY(-4px);filter:drop-shadow(0 26px 25px rgba(0,0,0,.38))}
+.map-region{fill:#164b56;stroke:#d9c48b}.map-region:hover,.map-region:focus{fill:#2e8a7b}.map-region.selected{fill:#d6a957}
+.search-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 22px}.region-search{flex:1;min-width:220px;border:1px solid rgba(231,189,102,.35);background:rgba(7,17,31,.7);color:var(--ink);border-radius:14px;padding:14px 16px;font:inherit;outline:none}.region-search:focus{border-color:var(--gold);box-shadow:0 0 0 3px #e7bd6624}.search-count{font-size:12px;color:var(--muted)}
+.culture-section{padding:70px 0 90px}.culture-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}.culture-card{border:1px solid rgba(231,189,102,.22);border-radius:20px;padding:23px;background:linear-gradient(145deg,rgba(36,67,72,.65),rgba(10,25,39,.85));min-height:185px}.culture-card .culture-icon{font-size:29px}.culture-card h3{font:800 19px Manrope,sans-serif;margin:15px 0 8px}.culture-card p{color:var(--muted);font-size:13px;line-height:1.75;margin:0}.language-select{border:1px solid rgba(231,189,102,.3);border-radius:999px;background:#0b1b2c;color:#f4f7fb;padding:10px 12px;font:600 12px 'DM Sans',sans-serif;cursor:pointer}
+@media(max-width:650px){.culture-grid{grid-template-columns:1fr}.search-row{align-items:stretch}.search-count{width:100%}}
+
+</style>
+</head>
+<body>
+<canvas id="universe" aria-hidden="true"></canvas>
+<header class="nav">
+  <a class="brand" href="#home" aria-label="O‘zbekiston — bosh sahifa"><span class="brand-mark">✳</span><span>VATANIM <span style="color:var(--blue)">MANIM</span></span></a>
+  <nav class="navlinks" aria-label="Asosiy navigatsiya"><a href="#about">Loyiha haqida</a><a href="#xarita">Xarita</a><a href="#regions">Hududlar</a><a href="#madaniyat">Madaniyat</a><a class="nav-cta" href="#yakun">Sayohatni boshlash ↗</a></nav>
+</header>
+<main>
+<section class="hero wrap" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow">Bir yurt. Ming hikoya.</div>
+    <h1>O‘zbekiston —<span>Vatanim manim.</span></h1>
+    <p>Bu zamin — qadimiy tarix va yorqin kelajak uchrashgan muqaddas maskan. Har bir shahri o‘z afsonasini so‘zlaydi, har bir vodiysi mehr va mehnat bilan yashnaydi. Moviy gumbazlar, keng dalalar va samimiy insonlar qalbimizdagi Vatan tuyg‘usini yanada yuksaltiradi. Keling, O‘zbekistonning betakror go‘zalligini birgalikda kashf etamiz.</p>
+    <div class="actions"><a class="btn btn-primary" href="#regions">Hududlarni kashf etish <span>↗</span></a><a class="btn btn-ghost" href="#about">Loyiha haqida ↓</a><button class="btn btn-ghost" id="surpriseBtn" type="button">✦ Meni hayron qoldir</button></div>
+  </div>
+  <div class="hero-art" aria-label="Yorug‘lik va zarrachalardan ilhomlangan 3D sfera">
+    <div class="orb"><div class="orb-core"></div></div>
+    <div class="float-chip">41° 18′ N · 69° 16′ E</div>
+    <div class="orb-label"><strong>O‘zbekiston</strong><small>Qalbimizdagi yagona manzil</small></div>
+  </div>
+  <div class="scroll-note"><span></span> Pastga aylantiring</div>
+</section>
+<section class="section wrap" id="about">
+  <div class="section-head">
+    <div><div class="section-kicker">Bizning umumiy uyimiz</div><h2>Har hudud — alohida<br>bir olam.</h2></div>
+    <p>O‘zbekistonning har bir go‘shasida o‘ziga xos tabiat, tarix va urf-odatlar yashaydi. Quyidagi kartochkalar orqali yurtimizning 14 ta ma’muriy hududiga qisqa sayohat qiling.</p>
+  </div>
+  <div class="quote"><blockquote>“Vatan — xaritadagi chegara emas. U — <span>bolalik xotirasi, ona tilimiz va qalbimizdagi mehr.</span>”</blockquote><div class="quote-mark">“</div></div>
+</section>
+
+<section class="section wrap" id="xarita">
+  <div class="section-head">
+    <div><div class="section-kicker">Interaktiv kashfiyot</div><h2>Xaritadan tanlang.</h2></div>
+    <p>Hudud nomini tanlang va uning ramziy maskani hamda hikoyasi bilan tanishing. Xarita — loyiha uchun soddalashtirilgan sxematik illyustratsiya.</p>
+  </div>
+  <div class="map-layout">
+    <div class="map-panel">
+      <div class="map-panel-head"><span>O‘zbekiston hududlari</span><span>HUDUDNI BOSING ↗</span></div>
+      <svg class="uz-map" id="uzMap" viewBox="0 0 520 360" role="img" aria-label="O‘zbekiston hududlarining soddalashtirilgan interaktiv sxematik xaritasi">
+        <defs><linearGradient id="mapGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#285c7c"/><stop offset="1" stop-color="#102c45"/></linearGradient></defs>
+        <path d="M50 105 L95 82 L132 94 L156 70 L194 82 L215 59 L249 74 L278 59 L302 83 L336 78 L363 105 L405 99 L429 126 L467 130 L452 158 L477 180 L453 203 L420 198 L402 223 L369 218 L349 244 L314 237 L294 261 L262 250 L241 274 L212 260 L189 278 L162 253 L133 261 L121 230 L91 221 L83 193 L55 178 L67 151 L43 135 Z" fill="url(#mapGlow)" opacity=".3"/>
+        <!-- Stylized clickable regions: illustrative geometry, not official boundaries -->
+        <g id="mapShapes">
+          <path class="map-region" data-region="Qoraqalpog‘iston Respublikasi" d="M55 85 L110 65 L147 83 L152 119 L125 145 L86 137 L57 117 Z" tabindex="0" role="button" aria-label="Qoraqalpog‘iston Respublikasi"/>
+          <path class="map-region" data-region="Xorazm viloyati" d="M125 145 L152 119 L171 137 L161 166 L137 171 L119 157 Z" tabindex="0" role="button" aria-label="Xorazm viloyati"/>
+          <path class="map-region" data-region="Navoiy viloyati" d="M152 83 L208 72 L230 104 L215 144 L184 157 L161 166 L171 137 L152 119 Z" tabindex="0" role="button" aria-label="Navoiy viloyati"/>
+          <path class="map-region" data-region="Buxoro viloyati" d="M137 171 L161 166 L184 157 L201 182 L184 211 L150 214 L127 195 Z" tabindex="0" role="button" aria-label="Buxoro viloyati"/>
+          <path class="map-region" data-region="Samarqand viloyati" d="M201 182 L224 166 L248 179 L247 202 L220 213 L184 211 Z" tabindex="0" role="button" aria-label="Samarqand viloyati"/>
+          <path class="map-region" data-region="Qashqadaryo viloyati" d="M184 211 L220 213 L247 202 L263 226 L244 247 L208 248 L188 233 Z" tabindex="0" role="button" aria-label="Qashqadaryo viloyati"/>
+          <path class="map-region" data-region="Surxondaryo viloyati" d="M244 247 L263 226 L281 245 L273 276 L251 289 L239 269 Z" tabindex="0" role="button" aria-label="Surxondaryo viloyati"/>
+          <path class="map-region" data-region="Jizzax viloyati" d="M224 166 L253 157 L272 175 L248 179 Z" tabindex="0" role="button" aria-label="Jizzax viloyati"/>
+          <path class="map-region" data-region="Sirdaryo viloyati" d="M253 157 L277 150 L290 169 L272 175 Z" tabindex="0" role="button" aria-label="Sirdaryo viloyati"/>
+          <path class="map-region" data-region="Toshkent viloyati" d="M277 150 L297 131 L321 145 L315 167 L290 169 Z" tabindex="0" role="button" aria-label="Toshkent viloyati"/>
+          <path class="map-region" data-region="Toshkent shahri" d="M298 139 L307 137 L311 146 L303 151 L297 146 Z" tabindex="0" role="button" aria-label="Toshkent shahri"/>
+          <path class="map-region" data-region="Farg‘ona viloyati" d="M321 145 L350 138 L374 155 L361 173 L329 169 L315 167 Z" tabindex="0" role="button" aria-label="Farg‘ona viloyati"/>
+          <path class="map-region" data-region="Namangan viloyati" d="M315 167 L329 169 L331 188 L306 193 L290 169 Z" tabindex="0" role="button" aria-label="Namangan viloyati"/>
+          <path class="map-region" data-region="Andijon viloyati" d="M361 173 L374 155 L392 163 L386 181 L367 185 Z" tabindex="0" role="button" aria-label="Andijon viloyati"/>
+        </g>
+        <g class="map-labels">
+          <text class="map-label" x="99" y="105">Qoraqalpog‘iston</text><text class="map-label" x="141" y="151">Xorazm</text>
+          <text class="map-label" x="190" y="115">Navoiy</text><text class="map-label" x="158" y="194">Buxoro</text>
+          <text class="map-label" x="218" y="196">Samarqand</text><text class="map-label" x="218" y="235">Qashqadaryo</text>
+          <text class="map-label" x="255" y="268">Surxondaryo</text><text class="map-label" x="244" y="169">Jizzax</text>
+          <text class="map-label" x="276" y="162">Sirdaryo</text><text class="map-label" x="298" y="128">Toshkent vil.</text>
+          <text class="map-label" x="347" y="153">Farg‘ona</text><text class="map-label" x="309" y="185">Namangan</text>
+          <text class="map-label" x="389" y="177">Andijon</text>
+        </g>
+      </svg>
+      <div class="ornament" aria-hidden="true"></div>
+    </div>
+    <aside class="map-info" id="mapInfo" aria-live="polite">
+      <div><div class="mini">Hudud haqida</div><h3 id="mapTitle">Samarqand viloyati</h3><div class="map-slogan" id="mapSlogan">Boqiy shahar, Sharq durdonasi</div><p id="mapDescription">Samarqand asrlar davomida ilm-fan, savdo va madaniyat chorrahasi bo‘lib kelgan. Registon maydonining moviy koshinlari va mahobatli madrasalari har bir mehmonni hayratga soladi. Bu shahar tarixning nafasini bugungi kun bilan bog‘lab turuvchi bebaho xazinadir.</p></div>
+      <button class="map-open" id="mapOpen" type="button">Hudud hikoyasini ochish ↗</button>
+    </aside>
+  </div>
+  <p style="font-size:11px;color:#71859a;line-height:1.7;margin-top:14px">Eslatma: bu xarita interaktiv dizayn namunasi bo‘lib, rasmiy geografik chegaralarni aks ettirmaydi. Nashr uchun rasmiy GIS/GeoJSON ma’lumotlari bilan almashtirish tavsiya etiladi.</p>
+</section>
+
+<section class="section wrap" id="regions">
+  <div class="section-head">
+    <div><div class="section-kicker">Kashf etishga tayyormisiz?</div><h2>Yurtimiz hududlari</h2></div>
+    <p>Har bir kartochkada hududning taniqli ramzi va o‘ziga xos ruhi haqida hikoya bor.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Hududlarni filtrlash">
+    <button class="filter active" data-filter="all">Barchasi · 14</button><button class="filter" data-filter="region">Viloyatlar · 12</button><button class="filter" data-filter="special">Respublika va poytaxt · 2</button>
+  </div>
+  <div class="search-row" role="search"><input id="regionSearch" class="region-search" type="search" placeholder="Viloyat, tarixiy joy yoki taomni qidiring…" aria-label="Hududlarni qidirish"><span class="search-count" id="searchCount" aria-live="polite">14 ta hudud</span></div>
+  <div class="grid" id="regionGrid">
+    <article class="card" data-kind="special"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/islamic-civilization-centre-1280.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">01 / POYTAXT</span><span class="card-tag">Zamonaviylik</span></div><h3>Toshkent shahri</h3><div class="slogan">Sharq nafasi, zamon sur’ati</div><p class="desc">Toshkent — qadimiy mahallalar va zamonaviy osmono‘par binolar uyg‘unlashgan poytaxt. Mustaqillik maydoni va Hazrati Imom majmuasi shaharning turli davrlardan so‘zlovchi timsollaridir. Bu yerda mehmondo‘stlik, ilm va yangilikka intilish bir yurak urishidek seziladi.</p><div class="card-more"><span>Shahar hikoyasi</span><span>↗</span></div></div></article>
+    <article class="card" data-kind="special"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/khiva-rooftops-1600.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">02 / RESPUBLIKA</span><span class="card-tag">Betakror meros</span></div><h3>Qoraqalpog‘iston</h3><div class="slogan">Amudaryo nafasi, Orol xotirasi</div><p class="desc">Qoraqalpog‘iston keng ufqlari, o‘ziga xos madaniyati va qadimiy qal’alari bilan ajralib turadi. Ellikqal’a yodgorliklari bu o‘lkaning uzoq tarixidan darak beradi. Orolbo‘yi tabiati esa inson va tabiat o‘rtasidagi mehr hamda mas’uliyatni eslatib turadi.</p><div class="card-more"><span>O‘lka hikoyasi</span><span>↗</span></div></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/registan-golden-hour-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">03 / VODIY</span><span class="card-tag">Ijod va jasorat</span></div><h3>Andijon viloyati</h3><div class="slogan">Boburlar yurti, vodiy yuragi</div><p class="desc">Andijon — buyuk sarkarda va shoir Zahiriddin Muhammad Bobur tavallud topgan zamin. Uning serhosil bog‘lari va gavjum bozorlari vodiy hayotining jo‘shqinligini namoyon etadi. Bu yerda mehnatsevarlik va ijodkorlik avloddan avlodga o‘tib keladi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/kalyan-minaret-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">04 / TARIX</span><span class="card-tag">Qadimiy shahar</span></div><h3>Buxoro viloyati</h3><div class="slogan">Ko‘hna devorlar, boqiy hikoyalar</div><p class="desc">Buxoro asrlar davomida Buyuk ipak yo‘lining muhim ilm va savdo markazlaridan biri bo‘lgan. Ark qal’asi va minoralar shaharning boy tarixini bugungacha yetkazib keladi. Tor ko‘chalari bo‘ylab yurgan inson go‘yo o‘tmish bilan yuzma-yuz uchrashadi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/shah-i-zinda-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">05 / VODIY</span><span class="card-tag">Hunarmandchilik</span></div><h3>Farg‘ona viloyati</h3><div class="slogan">Bog‘lar va ustalar diyori</div><p class="desc">Farg‘ona vodiysi yashil bog‘lari, serhosil yerlari va qadimiy hunarmandchiligi bilan mashhur. Rishton kulolchiligi rang-barang naqshlari bilan milliy san’atimizni dunyoga tanitadi. Bu zaminning har bir buyumida sabr, did va ustozlar merosi mujassam.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/bukhara-evening-1600.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">06 / TABIAT</span><span class="card-tag">Tog‘lar nafasi</span></div><h3>Jizzax viloyati</h3><div class="slogan">Zomin tog‘laridek musaffo</div><p class="desc">Jizzaxning tabiati dashtlar, tog‘lar va sokin dam olish maskanlarini birlashtiradi. Zomin milliy tabiat bog‘i archa o‘rmonlari va toza havosi bilan ko‘ngilga orom beradi. Bu yerda tabiatning sokin qudratini his qilib, yurtimizning betakror manzaralariga mahliyo bo‘lish mumkin.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/registan-morning-1280.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">07 / MEROS</span><span class="card-tag">Qadimiy Xorazm</span></div><h3>Xorazm viloyati</h3><div class="slogan">Xiva — ochiq osmon ostidagi muzey</div><p class="desc">Xorazm qadimiy sivilizatsiyalar va boy og‘zaki ijod an’analari bilan yodda qoladi. Yaqinidagi Ichan qal’a majmuasi minoralari va naqshinkor darvozalari bilan sayyohlarni sehrlaydi. Lazgi raqsi esa bu yurtning jo‘shqin ruhi va quvonchini butun dunyoga taratadi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/bibi-khanym-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">08 / BOG‘LAR</span><span class="card-tag">Gul va mehr</span></div><h3>Namangan viloyati</h3><div class="slogan">Gullar shahri, ko‘ngillar maskani</div><p class="desc">Namangan o‘zining gul bayramlari va obod bog‘lari bilan ko‘pchilikka tanish. Chust pichoqlari va do‘ppilari mahalliy ustalarning mahoratini namoyon etadi. Bu o‘lka mehnat, go‘zallik va mehmondo‘stlik qadri baland bo‘lgan maskandir.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/kalta-minor-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">09 / KENGLIK</span><span class="card-tag">Sahro va osmon</span></div><h3>Navoiy viloyati</h3><div class="slogan">Qizilqum kengliklaridagi matonat</div><p class="desc">Navoiy viloyatining bepoyon Qizilqum manzaralari insonga kenglik va erkinlik tuyg‘usini beradi. Sarmishsoy darasidagi qadimiy qoyatosh suratlari uzoq o‘tmishdan xabar beradi. Bu hudud tabiatning ulug‘vorligi va inson mehnatining qudratini birlashtiradi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/chor-minor-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">10 / QADRIYAT</span><span class="card-tag">Qadimiy izlar</span></div><h3>Qashqadaryo viloyati</h3><div class="slogan">Shahrisabz — buyuklar beshigi</div><p class="desc">Qashqadaryo qadimiy Shahrisabz va uning ulug‘vor Oqsaroy xarobalari bilan tarixda alohida o‘rin tutadi. Bu zamin Amir Temur nomi bilan chambarchas bog‘liq. Tog‘ etaklari, qadimiy obidalar va milliy urf-odatlar hududga o‘ziga xos joziba bag‘ishlaydi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/lyabi-hauz-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">11 / DURDONA</span><span class="card-tag">Jahon merosi</span></div><h3>Samarqand viloyati</h3><div class="slogan">Boqiy shahar, Sharq durdonasi</div><p class="desc">Samarqand asrlar davomida ilm-fan, savdo va madaniyat chorrahasi bo‘lib kelgan. Registon maydonining moviy koshinlari va mahobatli madrasalari har bir mehmonni hayratga soladi. Bu shahar tarixning nafasini bugungi kun bilan bog‘lab turuvchi bebaho xazinadir.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/islamic-civilization-centre-1280.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">12 / HOSIL</span><span class="card-tag">Mehnat diyori</span></div><h3>Sirdaryo viloyati</h3><div class="slogan">Mirzacho‘l bag‘ridagi yasharish</div><p class="desc">Sirdaryo keng dalalari va mehnatkash insonlari bilan yurtimiz hayotida muhim o‘rin egallaydi. Sirdaryo suvlari va sug‘orish tarmoqlari dehqonchilik ravnaqiga xizmat qiladi. Bu yerda har bir hosil ortida sabr, hamjihatlik va ertangi kunga ishonch turadi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/khiva-rooftops-1600.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">13 / JANUB</span><span class="card-tag">Quyoshli o‘lka</span></div><h3>Surxondaryo viloyati</h3><div class="slogan">Boysun ruhi, qadimiy sivilizatsiya</div><p class="desc">Surxondaryo iliq iqlimi, tog‘lari va ko‘p qatlamli tarixi bilan ajralib turadi. Boysun madaniy muhiti qadimiy urf-odatlar, xalq qo‘shiqlari va hunarlarini asrab keladi. Termiz atrofidagi arxeologik yodgorliklar esa bu o‘lkaning uzoq tarixiy aloqalarini yodga soladi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+    <article class="card" data-kind="region"><img class="card-image" loading="lazy" src="https://exploreuzbekistan.uz/media/gallery/registan-golden-hour-1920.webp" alt="O‘zbekistonning haqiqiy me’moriy manzarasi" referrerpolicy="no-referrer"><div class="card-content"><div class="card-top"><span class="card-num">14 / TOG‘LAR</span><span class="card-tag">Tabiat qo‘ynida</span></div><h3>Toshkent viloyati</h3><div class="slogan">Chorvoqdan Chotqolgacha</div><p class="desc">Toshkent viloyati tog‘lari, soylari va Chorvoq suv ombori bilan tabiat ixlosmandlarini o‘ziga chorlaydi. Ugam-Chotqol hududida tog‘ manzaralari va toza havo insonni kundalik shoshqaloqlikdan uzoqlashtiradi. Bu go‘sha poytaxtga yaqin turib, tabiat bilan qayta bog‘lanish imkonini beradi.</p><div class="card-more"><span>Hikoyani ochish</span><span>↗</span></div><button class="card-detail" type="button" aria-label="Hudud tafsilotlarini ochish" style="position:absolute;inset:0;z-index:4;opacity:0;cursor:pointer;border:0;background:transparent;width:100%;height:100%"></button></div></article>
+  </div>
+</section>
+<section class="closing wrap" id="yakun"><div class="eyebrow">Yuragimizda — O‘zbekiston</div><h2>Vatanimizning hikoyasi <span style="color:var(--blue)">davom etadi.</span></h2><p>Bu yurtning ertangi kuni — uni sevib, qadrlab, go‘zalligini asraydigan insonlar qo‘lida. O‘zbekiston bilan faxrlanishga har doim sabab bor.</p><a class="btn btn-primary" href="#home">Yuqoriga qaytish ↑</a></section>
+<section class="culture-section wrap" id="madaniyat"><div class="section-head"><div><div class="section-kicker">Meros va qadriyat</div><h2>Milliy ruhni <span style="color:var(--gold)">kashf eting.</span></h2></div><p>O‘zbekistonning boy madaniyati — hunarmandchilik, mehmondo‘stlik va avlodlardan qolgan an’analarda yashaydi.</p></div><div class="culture-grid"><article class="culture-card"><div class="culture-icon">🍲</div><h3>Milliy taomlar</h3><p>Palov, somsa, norin va tandir non — har hududning o‘ziga xos ta’mi va dasturxon odobi bor.</p></article><article class="culture-card"><div class="culture-icon">🏺</div><h3>Hunarmandchilik</h3><p>Rishton kulolchiligi, Buxoro zardo‘zligi, do‘ppi tikish va yog‘och o‘ymakorligi avlodlar mahoratini saqlaydi.</p></article><article class="culture-card"><div class="culture-icon">🎶</div><h3>Musiqa va urf-odat</h3><p>Shashmaqom, lazgi va xalq qo‘shiqlari yurtimizning turli hududlaridagi o‘ziga xos ruhni ifodalaydi.</p></article></div></section>
+</main>
+<footer><div class="wrap footer-inner"><span>© 2026 — “O‘zbekiston, Vatanim manim”</span><span>Mehr bilan yaratilgan · O‘zbekiston uchun</span></div></footer>
+
+<div class="modal-backdrop" id="regionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="region-modal">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Oynani yopish">×</button>
+    <div class="modal-kicker" id="modalKicker">O‘zbekiston hududlari</div>
+    <h3 id="modalTitle">Samarqand viloyati</h3>
+    <div class="modal-slogan" id="modalSlogan">Boqiy shahar, Sharq durdonasi</div>
+    <p id="modalDescription"></p>
+    <button class="streetview-action" id="streetViewLink" type="button"><span aria-hidden="true">◎</span> Sayt ichida 360° ko‘rinishni ochish ↗</button>
+    <div class="streetview-frame" id="streetViewFrame" aria-label="360 darajali panorama"></div>
+    <p class="streetview-note">Andijon, Buxoro, Jizzax, Xorazm, Namangan, Navoiy, Qashqadaryo, Samarqand, Sirdaryo va Surxondaryo ham qo‘shilgan. Panorama sayt ichida ochiladi; Google 360° tasvirlari hamma manzilda mavjud bo‘lavermaydi.</p>
+    <div class="modal-foot">O‘ZBEKISTON · VATANIM MANIM</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Three.js particle globe. This is a stylized globe, not a geographically accurate map.
+  const canvas = document.querySelector('#universe');
+  if (window.THREE && canvas) {
+    try {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, .1, 100);
+      camera.position.z = 8;
+      const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7));
+      renderer.setSize(innerWidth, innerHeight);
+      const group = new THREE.Group(); scene.add(group);
+      const count = 1500, positions = new Float32Array(count * 3), colors = new Float32Array(count * 3);
+      const c1 = new THREE.Color('#63d5ff'), c2 = new THREE.Color('#ffc66d');
+      for (let i=0;i<count;i++){
+        const u=Math.random(), v=Math.random(), theta=2*Math.PI*u, phi=Math.acos(2*v-1), r=2.15+(Math.random()-.5)*.13;
+        positions[i*3]=r*Math.sin(phi)*Math.cos(theta);
+        positions[i*3+1]=r*Math.cos(phi);
+        positions[i*3+2]=r*Math.sin(phi)*Math.sin(theta);
+        const c=c1.clone().lerp(c2, Math.random()*.32);
+        colors[i*3]=c.r;colors[i*3+1]=c.g;colors[i*3+2]=c.b;
+      }
+      const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(positions,3));geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
+      const points=new THREE.Points(geo,new THREE.PointsMaterial({size:.023,vertexColors:true,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false}));
+      group.add(points);
+      const ringGeo=new THREE.TorusGeometry(2.5,.003,4,180);
+      const ring=new THREE.Mesh(ringGeo,new THREE.MeshBasicMaterial({color:0x63d5ff,transparent:true,opacity:.28}));
+      ring.rotation.x=1.1;ring.rotation.y=.25;group.add(ring);
+      const starsGeo=new THREE.BufferGeometry(), starPos=[];
+      for(let i=0;i<500;i++){starPos.push((Math.random()-.5)*23,(Math.random()-.5)*15,-2-Math.random()*12);}
+      starsGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPos,3));
+      scene.add(new THREE.Points(starsGeo,new THREE.PointsMaterial({color:0x8fcdf2,size:.012,transparent:true,opacity:.5})));
+      let pointerX=0,pointerY=0;
+      addEventListener('pointermove',e=>{pointerX=(e.clientX/innerWidth-.5)*.35;pointerY=(e.clientY/innerHeight-.5)*.25},{passive:true});
+      addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));});
+      const clock=new THREE.Clock();
+      function render(){const t=clock.getElapsedTime();if(!reduced){group.rotation.y=t*.055+pointerX;group.rotation.x=Math.sin(t*.15)*.08+pointerY;points.rotation.y=-t*.025;ring.rotation.z=t*.025;}renderer.render(scene,camera);requestAnimationFrame(render);}
+      render();
+    } catch (e) { console.warn('Three.js background unavailable:', e); }
+  }
+  // GSAP entrances and staggered card reveal.
+  if (window.gsap && window.ScrollTrigger && !reduced) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-copy > *',{y:24,opacity:0,duration:.85,stagger:.12,ease:'power3.out',delay:.15});
+    gsap.from('.hero-art',{opacity:0,scale:.88,duration:1.25,ease:'power3.out',delay:.25});
+    gsap.utils.toArray('.section-head,.quote,.closing > *').forEach(el=>gsap.from(el,{y:35,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%',once:true}}));
+    gsap.utils.toArray('.card').forEach((card,i)=>gsap.from(card,{y:35,opacity:0,scale:.96,duration:.7,delay:(i%3)*.08,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 92%',once:true}}));
+    gsap.to('.orb',{y:24,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+  }
+  // Filters
+  const filters=document.querySelectorAll('.filter'), cards=document.querySelectorAll('.card');
+  filters.forEach(btn=>btn.addEventListener('click',()=>{
+    filters.forEach(b=>b.classList.toggle('active',b===btn));
+    const kind=btn.dataset.filter;
+    cards.forEach(card=>{card.hidden=kind!=='all'&&card.dataset.kind!==kind;});
+    if(window.ScrollTrigger) ScrollTrigger.refresh();
+  }));
+  // Pointer-follow light and subtle 3D tilt; disable on touch/reduced-motion devices.
+  if(!reduced && matchMedia('(hover:hover) and (pointer:fine)').matches){
+    cards.forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+        card.style.setProperty('--mx',x+'px');card.style.setProperty('--my',y+'px');
+        const rx=((y/r.height)-.5)*-5, ry=((x/r.width)-.5)*6;
+        card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.018)`;
+      });
+      card.addEventListener('pointerleave',()=>{card.style.transform='';});
+    });
+  }
+
+  // Region detail dialog powered by the same content as each card.
+  const modal=document.querySelector('#regionModal');
+  const modalTitle=document.querySelector('#modalTitle'), modalSlogan=document.querySelector('#modalSlogan');
+  const modalDescription=document.querySelector('#modalDescription'), modalKicker=document.querySelector('#modalKicker');
+  let previousFocus=null;
+  const streetViewLink=document.querySelector('#streetViewLink');
+  const streetViewFrame=document.querySelector('#streetViewFrame');
+  // Har bir viloyat uchun 360° oynada ochiladigan taniqli markaziy manzil.
+  // Google eng yaqin mavjud panoramani tanlaydi; qamrov hududga qarab farq qiladi.
+  const regionViewpoints={
+    'Qoraqalpog‘iston Respublikasi':'42.4602,59.6166',
+    'Andijon viloyati':'40.7821,72.3442', // Andijon markazi
+    'Buxoro viloyati':'39.7747,64.4286', // Labi Hovuz atrofi
+    'Farg‘ona viloyati':'40.3864,71.7864',
+    'Jizzax viloyati':'40.1158,67.8422', // Jizzax markazi
+    'Xorazm viloyati':'41.3783,60.3597', // Xiva, Ichan qal'a
+    'Namangan viloyati':'41.0058,71.6436', // Namangan markazi
+    'Navoiy viloyati':'40.1039,65.3688', // Navoiy markazi
+    'Qashqadaryo viloyati':'38.8610,65.7890', // Qarshi markazi
+    'Samarqand viloyati':'39.6542,66.9597', // Registon atrofi
+    'Sirdaryo viloyati':'40.8436,68.6617', // Guliston markazi
+    'Surxondaryo viloyati':'37.2242,67.2783', // Termiz markazi
+    'Toshkent viloyati':'41.2995,69.2401',
+    'Toshkent shahri':'41.3111,69.2797'
+  };
+  function openRegion(name, card){
+    const source=card || [...document.querySelectorAll('.card')].find(c=>c.querySelector('h3')?.textContent.trim()===name);
+    if(!source)return;
+    previousFocus=document.activeElement;
+    modalTitle.textContent=source.querySelector('h3')?.textContent.trim()||name;
+    modalSlogan.textContent=source.querySelector('.slogan')?.textContent.trim()||'O‘zbekistonning betakror go‘shasi';
+    modalDescription.textContent=source.querySelector('.desc')?.textContent.trim()||'Bu hudud O‘zbekistonning boy tarixi, tabiati va madaniy merosining ajralmas qismidir.';
+    modalKicker.textContent=source.dataset.kind==='special'?'Poytaxt va respublika':'O‘zbekiston hududlari';
+    const regionName=modalTitle.textContent.trim();
+    const viewpoint=regionViewpoints[regionName] || '41.2995,69.2401';
+    streetViewFrame.classList.remove('open');streetViewFrame.innerHTML='';
+    streetViewLink.setAttribute('aria-label',regionName+' uchun sayt ichida Google Maps 360° ko‘rinishini ochish');
+    modal.classList.add('open');document.body.style.overflow='hidden';
+    document.querySelector('#modalClose').focus();
+    if(window.gsap&&!reduced)gsap.fromTo('.region-modal',{y:24,opacity:0,scale:.97},{y:0,opacity:1,scale:1,duration:.35,ease:'power3.out'});
+  }
+  streetViewLink.addEventListener('click',()=>{const viewpoint=regionViewpoints[modalTitle.textContent.trim()]||'41.2995,69.2401';streetViewFrame.innerHTML='';const frame=document.createElement('iframe');frame.title=modalTitle.textContent.trim()+' — 360° panorama';frame.loading='lazy';frame.referrerPolicy='no-referrer-when-downgrade';frame.allow='fullscreen';frame.src='https://www.google.com/maps?layer=c&cbll='+encodeURIComponent(viewpoint)+'&cbp=12,0,0,0,0&output=svembed';streetViewFrame.appendChild(frame);streetViewFrame.classList.add('open');});
+  function closeRegion(){modal.classList.remove('open');streetViewFrame.classList.remove('open');streetViewFrame.innerHTML='';document.body.style.overflow='';if(previousFocus&&previousFocus.focus)previousFocus.focus();}
+  document.querySelector('#modalClose').addEventListener('click',closeRegion);
+  modal.addEventListener('click',e=>{if(e.target===modal)closeRegion();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeRegion();});
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click',e=>{
+      if(e.target.closest('a'))return;
+      openRegion(card.querySelector('h3')?.textContent.trim(),card);
+    });
+    card.addEventListener('keydown',e=>{if(e.key==='Enter')openRegion(card.querySelector('h3')?.textContent.trim(),card);});
+  });
+  // If a remote photo host is blocked/offline, show a fully local illustrated fallback.
+  document.querySelectorAll('.card-image').forEach((img, index) => {
+    img.addEventListener('error', () => {
+      if (img.dataset.fallbackApplied) return;
+      img.dataset.fallbackApplied = '1';
+      const title = (img.alt || 'O‘zbekiston').replace(/[&<>"']/g, '');
+      const palettes = [
+        ['#06152f','#087e8b','#f6bd60'], ['#101b3b','#5b4b8a','#f2a65a'],
+        ['#071b35','#176b87','#7bdff2'], ['#171b3d','#8d5524','#ffd166']
+      ];
+      const colors = palettes[index % palettes.length];
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520"><defs><linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${colors[0]}"/><stop offset="1" stop-color="${colors[1]}"/></linearGradient><linearGradient id="land" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${colors[2]}"/><stop offset="1" stop-color="${colors[1]}"/></linearGradient></defs><rect width="900" height="520" fill="url(#sky)"/><circle cx="700" cy="135" r="66" fill="${colors[2]}" opacity=".92"/><circle cx="700" cy="135" r="92" fill="${colors[2]}" opacity=".13"/><g fill="#fff" opacity=".65"><circle cx="130" cy="100" r="3"/><circle cx="240" cy="160" r="2"/><circle cx="400" cy="75" r="3"/><circle cx="560" cy="205" r="2"/><circle cx="790" cy="260" r="3"/></g><path d="M0 360 L120 245 205 320 330 190 450 330 570 235 690 330 790 225 900 330 V520 H0Z" fill="#d9eff5" opacity=".35"/><path d="M0 395 L155 305 275 380 430 275 565 390 720 300 900 390 V520 H0Z" fill="url(#land)"/><path d="M0 445 Q180 390 360 445 T720 440 T900 430 V520 H0Z" fill="#06152f" opacity=".6"/><g fill="none" stroke="${colors[2]}" stroke-width="3" opacity=".75"><path d="M35 35h70v70H35z M55 35v70 M35 55h70"/><path d="M795 395h70v70h-70z M815 395v70 M795 415h70"/></g><text x="450" y="455" fill="#fff" font-family="Arial,sans-serif" font-size="29" font-weight="700" text-anchor="middle" letter-spacing="2">${title}</text><text x="450" y="485" fill="#fff" opacity=".7" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" letter-spacing="5">O‘ZBEKISTON VATANIM MANIM</text></svg>`;
+      img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+      img.alt = title + ' — mahalliy zaxira illustratsiyasi';
+    }, { once: true });
+    if (img.complete && img.naturalWidth === 0) img.dispatchEvent(new Event('error'));
+  });
+
+  // Connect schematic map areas to the matching regional cards.
+  const mapRegions=[...document.querySelectorAll('.map-region')];
+  let selectedMapRegion='Samarqand viloyati';
+  function selectMapRegion(name){
+    const card=[...document.querySelectorAll('.card')].find(c=>c.querySelector('h3')?.textContent.trim()===name);
+    if(!card)return;
+    selectedMapRegion=name;
+    mapRegions.forEach(el=>el.classList.toggle('selected',el.dataset.region===name));
+    document.querySelector('#mapTitle').textContent=name;
+    document.querySelector('#mapSlogan').textContent=card.querySelector('.slogan')?.textContent.trim()||'Yurtimizning betakror go‘shasi';
+    document.querySelector('#mapDescription').textContent=card.querySelector('.desc')?.textContent.trim()||'Bu hudud O‘zbekistonning boy tarixi, tabiati va madaniy merosining ajralmas qismidir.';
+    document.querySelector('#mapOpen').textContent='Hikoyani ochish ↗';
+  }
+  mapRegions.forEach(el=>{
+    el.addEventListener('click',()=>selectMapRegion(el.dataset.region));
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectMapRegion(el.dataset.region);}});
+  });
+  document.querySelector('#mapOpen').addEventListener('click',()=>openRegion(selectedMapRegion));
+  selectMapRegion(selectedMapRegion);
+  // Cinematic anchor transitions for in-page navigation, while preserving accessibility.
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener('click',e=>{
+      const target=document.querySelector(link.getAttribute('href'));
+      if(!target)return;
+      e.preventDefault();
+      if(reduced){target.scrollIntoView({behavior:'auto'});history.replaceState(null,'',link.getAttribute('href'));return;}
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+      history.replaceState(null,'',link.getAttribute('href'));
+    });
+  });
+
+})();
+</script>
+
+<style>
+#surpriseBtn{cursor:pointer;font:inherit} .surprise-overlay{position:fixed;inset:0;z-index:1000;display:none;place-items:center;padding:20px;background:rgba(2,8,17,.82);backdrop-filter:blur(18px)}.surprise-overlay.open{display:grid}.surprise-box{position:relative;overflow:hidden;width:min(680px,100%);padding:clamp(28px,6vw,58px);border:1px solid rgba(150,220,255,.3);border-radius:30px;text-align:center;background:radial-gradient(ellipse at 50% 0,rgba(45,141,196,.32),transparent 60%),linear-gradient(145deg,#102b43,#07111f 75%);box-shadow:0 30px 120px #0009}.surprise-box:before{content:'✦';position:absolute;font-size:240px;color:#b5e9ff0c;top:-70px;right:-20px;pointer-events:none}.surprise-kicker{color:#ffc66d;font-size:11px;letter-spacing:.25em;text-transform:uppercase}.surprise-box h2{font:800 clamp(34px,7vw,58px)/1.05 Manrope,sans-serif;letter-spacing:-.06em;margin:18px 0}.surprise-box p{color:#bfd0df;line-height:1.8;max-width:490px;margin:0 auto 24px}.surprise-emblem{font-size:58px;filter:drop-shadow(0 0 22px #6ad7ff80);animation:surpriseFloat 3s ease-in-out infinite}@keyframes surpriseFloat{50%{transform:translateY(-9px) rotate(5deg)}}.surprise-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.surprise-close{position:absolute;right:16px;top:14px;border:1px solid #ffffff26;background:#ffffff0c;color:white;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}.surprise-result{min-height:24px;color:#9edfff;font-size:12px;margin-top:18px!important}
+</style>
+<div class="surprise-overlay" id="surpriseOverlay" role="dialog" aria-modal="true" aria-labelledby="surpriseTitle"><div class="surprise-box"><button class="surprise-close" id="surpriseClose" aria-label="Yopish">×</button><div class="surprise-emblem">✺</div><div class="surprise-kicker">Vatanimning sirli kapsulasi</div><h2 id="surpriseTitle">Yurtingiz sizni chorlayapti.</h2><p id="surpriseText">Bir tugma bilan O‘zbekistonning kutilmagan go‘shasiga yo‘l oling. Balki navbatdagi sevimli manzilingizni topib qolarsiz.</p><div class="surprise-actions"><button class="btn btn-primary" id="surpriseSpin" type="button">Menga manzil tanla ✨</button><button class="btn btn-ghost" id="surpriseExplore" type="button" hidden>Hikoyani ochish ↗</button></div><p class="surprise-result" id="surpriseResult" aria-live="polite"></p></div></div>
+<script>
+(()=>{const overlay=document.getElementById('surpriseOverlay'), open=document.getElementById('surpriseBtn'), close=document.getElementById('surpriseClose'), spin=document.getElementById('surpriseSpin'), explore=document.getElementById('surpriseExplore');let chosen=null;function hide(){overlay.classList.remove('open');document.body.style.overflow='';open.focus()}open.addEventListener('click',()=>{overlay.classList.add('open');document.body.style.overflow='hidden';document.getElementById('surpriseTitle').textContent='Yurtingiz sizni chorlayapti.';document.getElementById('surpriseText').textContent='Bir tugma bilan O‘zbekistonning kutilmagan go‘shasiga yo‘l oling. Balki navbatdagi sevimli manzilingizni topib qolarsiz.';document.getElementById('surpriseResult').textContent='';explore.hidden=true;spin.focus()});close.addEventListener('click',hide);overlay.addEventListener('click',e=>{if(e.target===overlay)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))hide()});spin.addEventListener('click',()=>{const cards=[...document.querySelectorAll('.card')];if(!cards.length)return;chosen=cards[Math.floor(Math.random()*cards.length)];const title=chosen.querySelector('h3')?.textContent.trim()||'O‘zbekiston';document.getElementById('surpriseTitle').textContent=title;document.getElementById('surpriseText').textContent=chosen.querySelector('.desc')?.textContent.trim()||'Bu hudud O‘zbekistonning betakror go‘shalaridan biri.';document.getElementById('surpriseResult').textContent='✦ Bugungi kashfiyotingiz shu manzil!';explore.hidden=false;if(window.gsap&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)gsap.fromTo('.surprise-box',{scale:.94,opacity:.5,rotateX:8},{scale:1,opacity:1,rotateX:0,duration:.55,ease:'back.out(1.5)'});});explore.addEventListener('click',()=>{if(!chosen)return;hide();if(typeof openRegion==='function'){}chosen.scrollIntoView({behavior:'smooth',block:'center'});chosen.animate([{transform:'scale(1)'},{transform:'scale(1.025)'},{transform:'scale(1)'}],{duration:650});chosen.click()});})();
+</script>
+
+
+<style>
+/* Vatanim Manim: extra interactive layer */
+:root{--night-glow:rgba(67,157,222,.16)}
+body.night-mode{--bg:#02050d;--panel:rgba(4,10,22,.82);--ink:#e8f2ff;--muted:#90a5bd;--line:rgba(139,188,255,.2)}
+body.night-mode:after{background:radial-gradient(ellipse at 70% 20%,rgba(48,75,170,.22),transparent 45%),linear-gradient(180deg,#02050d,#070b1b 60%,#02050d)}
+body.night-mode .nav{background:rgba(2,5,13,.82)}
+body.ornament-off .ornament,body.ornament-off .national-ornament{opacity:0!important}
+.national-ornament{position:fixed;inset:0;z-index:30;pointer-events:none;opacity:.22;background-image:repeating-linear-gradient(45deg,transparent 0 17px,rgba(99,213,255,.16) 18px 19px,transparent 20px 36px);mask-image:linear-gradient(90deg,#000,transparent 12%,transparent 88%,#000);transition:opacity .3s}
+.feature-dock{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:min(420px,calc(100vw - 36px))}
+.feature-btn{display:flex;align-items:center;gap:7px;border:1px solid rgba(160,220,255,.24);border-radius:999px;padding:11px 14px;background:rgba(6,19,34,.86);color:#eaf7ff;font:600 12px 'DM Sans',sans-serif;backdrop-filter:blur(14px);cursor:pointer;box-shadow:0 8px 30px #0003;transition:transform .2s,border-color .2s}
+.feature-btn:hover,.feature-btn[aria-pressed=true]{transform:translateY(-3px);border-color:#63d5ff;background:rgba(19,53,77,.94)}
+.feature-modal{position:fixed;inset:0;z-index:110;display:none;place-items:center;padding:18px;background:rgba(1,6,14,.82);backdrop-filter:blur(16px)}.feature-modal.open{display:grid}.feature-panel{width:min(680px,100%);max-height:min(86vh,800px);overflow:auto;border:1px solid rgba(99,213,255,.3);border-radius:26px;padding:clamp(22px,4vw,38px);background:linear-gradient(145deg,#10283f,#07111f 75%);box-shadow:0 30px 100px #0008}.feature-panel h2{font:800 clamp(28px,5vw,42px)/1.1 Manrope,sans-serif;letter-spacing:-.05em;margin:8px 0 12px}.feature-panel p{color:#b8cadd;line-height:1.7}.feature-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.feature-close{border:1px solid #ffffff26;background:#ffffff0c;color:white;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer;flex-shrink:0}.quiz-question{padding:18px 0;border-top:1px solid #ffffff1a}.quiz-question h3{font-size:15px;margin:0 0 12px}.quiz-options{display:flex;gap:8px;flex-wrap:wrap}.quiz-options button{border:1px solid #ffffff24;background:#ffffff08;color:#eaf5ff;padding:9px 12px;border-radius:12px;cursor:pointer}.quiz-options button.selected{background:#dff5ff;color:#081522;border-color:#dff5ff}.quiz-submit{margin-top:18px;border:0;border-radius:99px;padding:13px 18px;font-weight:800;cursor:pointer;background:#dff5ff;color:#081522}.quiz-result{padding:16px;border:1px solid #63d5ff4d;border-radius:15px;margin-top:16px;color:#dff5ff;background:#63d5ff0c}.sound-note{font-size:11px;color:#8fa6bb!important}.cinematic .hero-copy>*{animation:cinematicIn .8s both}.cinematic .hero-copy>*:nth-child(2){animation-delay:.1s}.cinematic .hero-copy>*:nth-child(3){animation-delay:.2s}.cinematic .hero-copy>*:nth-child(4){animation-delay:.3s}@keyframes cinematicIn{from{opacity:0;transform:translateY(22px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:560px){.feature-dock{right:10px;bottom:10px;gap:6px;max-width:calc(100vw - 20px)}.feature-btn{padding:10px 11px;font-size:11px}.feature-btn .btn-label{display:none}.feature-panel{padding:20px}}
+@media(prefers-reduced-motion:reduce){.cinematic .hero-copy>*{animation:none}}
+</style>
+<div class="national-ornament" aria-hidden="true"></div>
+<div class="feature-dock" aria-label="Sayt funksiyalari">
+ <button class="feature-btn" id="nightToggle" aria-pressed="false" title="Tun/kunduz rejimi">🌙 <span class="btn-label">Tun rejimi</span></button>
+ <button class="feature-btn" id="musicToggle" aria-pressed="false" title="Musiqani yoqish">♫ <span class="btn-label">Atmosfera</span></button>
+ <button class="feature-btn" id="ornamentToggle" aria-pressed="true" title="Milliy naqshlarni almashtirish">✧ <span class="btn-label">Naqshlar</span></button>
+ <button class="feature-btn" id="quizToggle" title="Bilim sinovi">🏆 <span class="btn-label">Viktorina</span></button>
+ <select class="language-select" id="languageSelect" aria-label="Tilni tanlash"><option value="uz">UZ</option><option value="en">EN</option><option value="ru">RU</option></select>
+</div>
+<div class="feature-modal" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+ <section class="feature-panel"><div class="feature-head"><span class="eyebrow">O‘zbekiston bilimdoni</span><button class="feature-close" id="quizClose" aria-label="Yopish">×</button></div><h2 id="quizTitle">Yurtimizni qanchalik taniysiz?</h2><p>5 ta savolga javob bering va natijangizni bilib oling.</p><form id="quizForm">
+ <div class="quiz-question" data-answer="1"><h3>1. O‘zbekiston poytaxti qaysi shahar?</h3><div class="quiz-options"><button type="button" data-value="0">Samarqand</button><button type="button" data-value="1">Toshkent</button><button type="button" data-value="2">Buxoro</button></div></div>
+ <div class="quiz-question" data-answer="2"><h3>2. Registon maydoni qaysi shaharda?</h3><div class="quiz-options"><button type="button" data-value="0">Xiva</button><button type="button" data-value="1">Qo‘qon</button><button type="button" data-value="2">Samarqand</button></div></div>
+ <div class="quiz-question" data-answer="0"><h3>3. O‘zbekiston bayrog‘ida qaysi ranglar bor?</h3><div class="quiz-options"><button type="button" data-value="0">Moviy, oq, yashil va qizil chiziqlar</button><button type="button" data-value="1">Faqat ko‘k va sariq</button><button type="button" data-value="2">Qora, oq va pushti</button></div></div>
+ <div class="quiz-question" data-answer="1"><h3>4. Xiva shahrining mashhur tarixiy ichki shahri nima deb ataladi?</h3><div class="quiz-options"><button type="button" data-value="0">Ark</button><button type="button" data-value="1">Ichan qal’a</button><button type="button" data-value="2">Chorsu</button></div></div>
+ <div class="quiz-question" data-answer="2"><h3>5. Rishton nimasi bilan mashhur?</h3><div class="quiz-options"><button type="button" data-value="0">Kema qurilishi</button><button type="button" data-value="1">Olmos konlari</button><button type="button" data-value="2">Kulolchilik</button></div></div>
+ <button class="quiz-submit" type="submit">Natijani ko‘rish ✨</button><div class="quiz-result" id="quizResult" aria-live="polite" hidden></div></form></section>
+</div>
+<script>
+(()=>{
+ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+ // Night/day theme toggle
+ const night=$('#nightToggle'); night.addEventListener('click',()=>{const on=document.body.classList.toggle('night-mode');night.setAttribute('aria-pressed',String(on));night.innerHTML=on?'☀️ <span class="btn-label">Kunduz rejimi</span>':'🌙 <span class="btn-label">Tun rejimi</span>';});
+ // Decorative ornament toggle
+ const ornament=$('#ornamentToggle'); ornament.addEventListener('click',()=>{const on=document.body.classList.toggle('ornament-off');ornament.setAttribute('aria-pressed',String(!on));ornament.innerHTML=on?'◇ <span class="btn-label">Naqshlar o‘chiq</span>':'✧ <span class="btn-label">Naqshlar</span>';});
+ // Copyright-safe, synthesized ambient tones; audio only starts after user gesture.
+ let audio=null, master=null, oscillators=[], musicOn=false; const music=$('#musicToggle');
+ function startMusic(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC){music.title='Bu brauzer audio sintezini qo‘llamaydi';return}audio=new AC();master=audio.createGain();master.gain.value=.018;master.connect(audio.destination);[110,164.81,220].forEach((hz,i)=>{const o=audio.createOscillator(),g=audio.createGain();o.type=i===1?'sine':'triangle';o.frequency.value=hz;g.gain.value=i===0?.32:.14;o.connect(g);g.connect(master);o.start();oscillators.push(o)});musicOn=true;music.setAttribute('aria-pressed','true');music.innerHTML='Ⅱ <span class="btn-label">Atmosferani o‘chirish</span>';}
+ function stopMusic(){if(audio){oscillators.forEach(o=>{try{o.stop()}catch(e){}});audio.close();audio=null;oscillators=[]}musicOn=false;music.setAttribute('aria-pressed','false');music.innerHTML='♫ <span class="btn-label">Atmosfera</span>'}
+ music.addEventListener('click',()=>musicOn?stopMusic():startMusic());
+ // Quiz interactions and scoring
+ const modal=$('#quizModal'), quizBtn=$('#quizToggle'), close=$('#quizClose');
+ function closeQuiz(){modal.classList.remove('open');document.body.style.overflow=''}
+ quizBtn.addEventListener('click',()=>{modal.classList.add('open');document.body.style.overflow='hidden'});close.addEventListener('click',closeQuiz);modal.addEventListener('click',e=>{if(e.target===modal)closeQuiz()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuiz()});
+ $$('.quiz-question').forEach(q=>q.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{q.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');q.dataset.selected=b.dataset.value;$('#quizResult').hidden=true;})));
+ $('#quizForm').addEventListener('submit',e=>{e.preventDefault();const qs=$$('.quiz-question');const answered=qs.filter(q=>q.dataset.selected!==undefined);if(answered.length<qs.length){$('#quizResult').hidden=false;$('#quizResult').textContent=`Avval barcha savollarga javob bering: ${answered.length}/${qs.length}.`;return}const score=qs.filter(q=>q.dataset.selected===q.dataset.answer).length;const msg=score===5?'Ajoyib! Siz haqiqiy O‘zbekiston bilimdonisiz!':score>=3?'Zo‘r natija! Yana bir oz kashf qilsangiz, yanada kuchli bo‘lasiz.':'Yaxshi boshlanish! Hududlar bo‘limini o‘rganib, yana urinib ko‘ring.';$('#quizResult').hidden=false;$('#quizResult').textContent=`Natija: ${score}/5. ${msg}`;});
+ // Scroll-based cinematic reveals; keep native scrolling and honor reduced-motion preferences.
+ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.body.classList.add('cinematic');if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.section-head,.card,.quote,.map-layout,.closing').forEach((el,i)=>{gsap.fromTo(el,{y:24,opacity:0},{y:0,opacity:1,duration:.7,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}})});}}
+ window.addEventListener('pagehide',()=>{if(audio)stopMusic()});
+})();
+</script>
+
+
+<script>
+(()=>{
+ const search=document.getElementById('regionSearch'), count=document.getElementById('searchCount');
+ const cards=[...document.querySelectorAll('#regionGrid .card')];
+ function filterCards(){const q=(search?.value||'').trim().toLocaleLowerCase();let visible=0;cards.forEach(card=>{const text=card.innerText.toLocaleLowerCase();const match=text.includes(q);card.hidden=!match; if(match)visible++;});if(count)count.textContent=`${visible} ta hudud topildi`;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));}
+ search?.addEventListener('input',filterCards);
+ // The language switch translates the core navigation and feature labels; regional descriptions stay in Uzbek.
+ const translations={uz:{about:'Loyiha haqida',map:'Xarita',regions:'Hududlar',culture:'Madaniyat',start:'Sayohatni boshlash ↗',search:'Viloyat, tarixiy joy yoki taomni qidiring…',discover:'Hududlarni kashf etish'},en:{about:'About',map:'Map',regions:'Regions',culture:'Culture',start:'Start exploring ↗',search:'Search a region, landmark or dish…',discover:'Explore regions'},ru:{about:'О проекте',map:'Карта',regions:'Регионы',culture:'Культура',start:'Начать путешествие ↗',search:'Найти регион, достопримечательность или блюдо…',discover:'Открыть регионы'}};
+ const lang=document.getElementById('languageSelect');lang?.addEventListener('change',()=>{const t=translations[lang.value]||translations.uz;const links=[...document.querySelectorAll('.navlinks a')];if(links[0])links[0].textContent=t.about;if(links[1])links[1].textContent=t.map;if(links[2])links[2].textContent=t.regions;if(links[3])links[3].textContent=t.culture;if(links[4])links[4].textContent=t.start;if(search)search.placeholder=t.search;const primary=document.querySelector('.hero .btn-primary');if(primary)primary.childNodes[0].textContent=t.discover+' ';document.documentElement.lang=lang.value;});
+ // Mark map as illustrative, not official administrative GIS boundaries.
+ const map=document.getElementById('uzMap');if(map){map.setAttribute('aria-label','O‘zbekiston hududlarining interaktiv, sxematik 3D uslubidagi xaritasi; rasmiy GIS chegaralari emas');}
+})();
+</script>
+
+</body>
+</html>
